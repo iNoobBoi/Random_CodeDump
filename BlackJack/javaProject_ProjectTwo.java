@@ -25,24 +25,27 @@ public class javaProject_ProjectTwo {
 			int winNum = 21; //number of achieving blackjack
 			int bustNum = 22; //number or higher which you will achieve bust
 			
-			int dealFinal; //final score of dealer
-			int userFinal; //final score of user
+			int dealFinal = 0; //final score of dealer
+			int userFinal = 0; //final score of user
 			
-			int userWins; //number of wins the user has
-			int dealWins; //number of wins the dealer has
-			int tieCount; //number of times user has tied with the dealer
+			int userWins = 0; //number of wins the user has
+			int dealWins = 0; //number of wins the dealer has
+			int tieCount = 0; //number of times user has tied with the dealer
 			
-			String playAgain; //whether or not the user wants to play again
-			String cpuResponse; //cpu's response to user
+			String playAgain = ""; //whether or not the user wants to play again
+			String cpuResponse = ""; //cpu's response to user
+			
+			String userHit = ""; //user either hits or stays
+			boolean conTinue = true; //whether or not the loop keeps going
 			
 			for (int j = 0; j > -1; j++) {
 				if (userResponse == "yes") {
 					cpuResponse = "Great! Let's get started.";
-					break;
+					j = -2;
 					}
 				else if (userResponse == "no") {
 					cpuResponse = "Well, we're going to play anyway. Let's get started.";
-					break;
+					j = -2;
 					}
 				else {
 					cpuResponse = "Invalid response. Please enter lowercase letters and either \"yes\" or \"no\".";
@@ -56,7 +59,7 @@ public class javaProject_ProjectTwo {
 			System.out.println("[System] Shuffling Deck");
 			Deck cardDeck = new Deck(deckCount); //creates the shuffled card deck
 			
-			System.out.println("[System] Preparing Hands")
+			System.out.println("[System] Preparing Hands");
 			Hand user = new Hand(winNum); //creates the user hand
 			
 			System.out.println("[System] Preparing Dealer AI");
@@ -87,8 +90,6 @@ public class javaProject_ProjectTwo {
 			System.out.println("You have the " + user.getCard(0) + " and the " + user.getCard(1) + ". Your hand value is " + user.getHandValue());
 			
 			/* USER'S TURN */
-			String userHit; //user either hits or stays
-			boolean conTinue; //whether or not the loop keeps going
 			
 			while (user.getHandValue() <= winNum && conTinue == true) {
 				System.out.println("Hit or Stay?");
