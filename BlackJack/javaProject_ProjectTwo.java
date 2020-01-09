@@ -11,8 +11,7 @@ public class javaProject_ProjectTwo {
 			
 			int cardInfo[] = new int[2]; //array to store the info of the cards drawn
 			
-			int userAce = 0; //number of aces the user has
-			int dealAce = 0; //number of aces the dealer has
+			int deckCount = 1; //number of decks the user will be playing with
 			int winNum = 21; //number of achieving blackjack
 			int bustNum = 22; //number or higher which you will achieve bust
 			
@@ -35,10 +34,10 @@ public class javaProject_ProjectTwo {
 			String userName = input.nextLine();
 		
 			System.out.print("Hello " + userName + "!\nFor the duration of this program, I would request you to only enter lowercase characters.\nWould you like to play some BlackJack? ");
-			Scanner inPut = new Scanner(System.in);
-			String userResponse = inPut.nextLine();
 			
-			for (int j = 0, j > -1, j++) {
+			for (int j = 0; j > -1; j++) {
+				Scanner inPut = new Scanner(System.in);
+				String userResponse = inPut.nextLine();
 				if (userResponse == "yes") {
 					cpuResponse = "Great! Let's get started.";
 					}
@@ -46,7 +45,7 @@ public class javaProject_ProjectTwo {
 					cpuResponse = "Well, we're going to play anyway. Let's get started.";
 					}
 				else {
-					System.out.println("Incorrect input. Please enter \"yes\" or \"no\" in lowercase letters to continue.");
+					System.out.println(userResponse + " is an incorrect input. Please enter \"yes\" or \"no\" in lowercase letters to continue.");
 					}
 			} //infinite loop until correct input
 		
@@ -55,7 +54,7 @@ public class javaProject_ProjectTwo {
 			
 			/* SETUP */
 			System.out.println("[System] Shuffling Deck");
-			Deck cardDeck = new Deck(); //creates the shuffled card deck
+			Deck cardDeck = new Deck(deckCount); //creates the shuffled card deck
 			
 			System.out.println("[System] Preparing Hands");
 			Hand user = new Hand(winNum); //creates the user hand
