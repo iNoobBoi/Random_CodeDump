@@ -204,7 +204,7 @@ public class javaProject_ProjectTwo {
 			playAgain = INput.nextLine();
 			
 			if(playAgain == "no") {
-				System.out.println("[System] Thank you for playing Java BlackJack as made by Justin Wang.");
+				System.out.println("[System] Thank you for playing Java BlackJack.");
 				break;
 				}
 			else {
