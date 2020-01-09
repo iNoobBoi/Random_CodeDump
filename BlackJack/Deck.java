@@ -22,12 +22,12 @@ public class Deck {
 	public void shuffleDeck() {
 		int index;
 		Random random = new Random();
-		for (int i = 0; i < this.cardDeck[].length(); i++) {
+		for (int i = 0; i < this.counter; i++) {
 			index = random.nextInt(i + 1);
 			if (index != i) {
-				this.cardDeck[index] ^= this.cardDeck[i];
-				this.cardDeck[i] ^= this.cardDeck[index];
-				this.cardDeck[index] ^= this.cardDeck[i];
+				this.cardDeck[index] = this.cardDeck[i];
+				this.cardDeck[i] = this.cardDeck[index];
+				this.cardDeck[index] = this.cardDeck[i];
 				}
 			}
 		} //shuffles the deck
