@@ -11,7 +11,7 @@ public class Deck {
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 13; j++) {
 				deckIndex = i * j;
-				this.cardDeck[deckIndex].setCard(i, j); //sets the card in 
+				this.cardDeck[deckIndex] = new Card(i, j); //creates a new card based on the values of i and j
 				} //sets rank of each card to one 13 ranks
 			} //sets suit of each Card to one of 4 suits
 		}
