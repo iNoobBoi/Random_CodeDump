@@ -38,13 +38,17 @@ public class javaProject_ProjectTwo {
 			Scanner inPut = new Scanner(System.in);
 			String userResponse = inPut.nextLine();
 			
-			if (userResponse == "yes") {
-				cpuResponse = "Great! Let's get started.";
-				}
-			else if (userResponse == "no") {
-				cpuResponse = "Well, we're going to play anyway. Let's get started.";
-				}
-			//will simple continue upon an invalid input; an infinite loop does not work
+			for (int j = 0, j > -1, j++) {
+				if (userResponse == "yes") {
+					cpuResponse = "Great! Let's get started.";
+					}
+				else if (userResponse == "no") {
+					cpuResponse = "Well, we're going to play anyway. Let's get started.";
+					}
+				else {
+					System.out.println("Incorrect input. Please enter \"yes\" or \"no\" in lowercase letters to continue.");
+					}
+			} //infinite loop until correct input
 		
 			System.out.println(cpuResponse);
 			System.out.println("[System] Beginning Game");
