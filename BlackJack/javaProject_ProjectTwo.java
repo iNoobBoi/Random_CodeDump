@@ -4,22 +4,13 @@ import java.util.Scanner;
 public class javaProject_ProjectTwo {
 	public static void main(String []args) {
 		for (int i = 0; i > -1; i++) {
-			/* INTRODUCTION */
-			System.out.print("Hello! What is your name?");
-			Scanner input = new Scanner(System.in);
-			String userName = input.nextLine();
-		
-			System.out.print("Hello " + userName + "!\nFor the duration of this program, I would request you to only enter lowercase characters.\nWould you like to play some BlackJack? ");
-			Scanner inPut = new Scanner(System.in);
-			String userResponse = inPut.nextLine();
-			
+			/* VARIABLES */
 			boolean win = false;
 			boolean bust = false;
 			boolean keepGoing = true;
 			
 			int cardInfo[] = new int[2]; //array to store the info of the cards drawn
 			
-			int deckCount = 1; //number of decks to play with
 			int userAce = 0; //number of aces the user has
 			int dealAce = 0; //number of aces the dealer has
 			int winNum = 21; //number of achieving blackjack
@@ -38,26 +29,29 @@ public class javaProject_ProjectTwo {
 			String userHit = ""; //user either hits or stays
 			boolean conTinue = true; //whether or not the loop keeps going
 			
-			for (int j = 0; j > -1; j++) {
-				if (userResponse == "yes") {
-					cpuResponse = "Great! Let's get started.";
-					j = -2;
-					}
-				else if (userResponse == "no") {
-					cpuResponse = "Well, we're going to play anyway. Let's get started.";
-					j = -2;
-					}
-				else {
-					cpuResponse = "Invalid response. Please enter lowercase letters and either \"yes\" or \"no\".";
-					}
-				} //infinite loop in case user enters an invalid input
+			/* INTRODUCTION */
+			System.out.print("Hello! What is your name? ");
+			Scanner input = new Scanner(System.in);
+			String userName = input.nextLine();
+		
+			System.out.print("Hello " + userName + "!\nFor the duration of this program, I would request you to only enter lowercase characters.\nWould you like to play some BlackJack? ");
+			Scanner inPut = new Scanner(System.in);
+			String userResponse = inPut.nextLine();
+			
+			if (userResponse == "yes") {
+				cpuResponse = "Great! Let's get started.";
+				}
+			else if (userResponse == "no") {
+				cpuResponse = "Well, we're going to play anyway. Let's get started.";
+				}
+			//will simple continue upon an invalid input; an infinite loop does not work
 		
 			System.out.println(cpuResponse);
 			System.out.println("[System] Beginning Game");
 			
 			/* SETUP */
 			System.out.println("[System] Shuffling Deck");
-			Deck cardDeck = new Deck(deckCount); //creates the shuffled card deck
+			Deck cardDeck = new Deck(); //creates the shuffled card deck
 			
 			System.out.println("[System] Preparing Hands");
 			Hand user = new Hand(winNum); //creates the user hand
@@ -90,7 +84,6 @@ public class javaProject_ProjectTwo {
 			System.out.println("You have the " + user.getCard(0) + " and the " + user.getCard(1) + ". Your hand value is " + user.getHandValue());
 			
 			/* USER'S TURN */
-			
 			while (user.getHandValue() <= winNum && conTinue == true) {
 				System.out.println("Hit or Stay?");
 				Scanner iNput = new Scanner(System.in);
