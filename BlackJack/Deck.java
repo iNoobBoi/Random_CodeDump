@@ -8,12 +8,14 @@ public class Deck {
 	public Deck(int deckCount) {
 		int deckIndex;
 		
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 13; j++) {
-				deckIndex = i * j;
-				this.cardDeck[deckIndex] = new Card(i, j); //creates a new card based on the values of i and j
-				} //sets rank of each card to one 13 ranks
-			} //sets suit of each Card to one of 4 suits
+		for (int i = 0; i < deckCount; i++) {
+			for (int j = 0; j < 4; j++) {
+				for (int k = 0; k < 13; k++) {
+					deckIndex = (i * 13) + j;
+					this.cardDeck[deckIndex] = new Card(i, j); //creates a new card based on the values of i and j
+					} //sets rank of each card to one 13 ranks
+				} //sets suit of each Card to one of 4 suits
+			} //creates 1 deck of each kind of card and then repeats until all of the decks are prepared
 		}
 	
 	public void shuffleDeck() {
