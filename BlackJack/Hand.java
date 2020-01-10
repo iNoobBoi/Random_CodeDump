@@ -19,7 +19,7 @@ public class Hand {
 		}
 	
 	public String getCard(int whatCard) {
-		return this.userHand[whatCard - 1].getCardString();
+		return this.userHand[whatCard].getCardString();
 		} //returns the string value of a card in the hand
 	
 	public int getHandSize() {
