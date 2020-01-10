@@ -61,16 +61,16 @@ public class javaProject_ProjectTwo {
 			Dealer dealer = new Dealer(winNum); //creates the dealer hand
 	
 			System.out.println("[System] Dealing Cards");
-			cardInfo = cardDeck.drawCard().getInfo();
+			cardInfo = cardDeck.drawCard().getInfo().clone();
 			dealer.drawCard(cardInfo[0], cardInfo[1]); //one card to dealer
 		
-			cardInfo = cardDeck.drawCard().getInfo();
+			cardInfo = cardDeck.drawCard().getInfo().clone();
 			dealer.drawCard(cardInfo[0], cardInfo[1]); //second card to dealer
 		
-			cardInfo = cardDeck.drawCard().getInfo();
+			cardInfo = cardDeck.drawCard().getInfo().clone();
 			user.drawCard(cardInfo[0], cardInfo[1]); //one card to user
 		
-			cardInfo = cardDeck.drawCard().getInfo();
+			cardInfo = cardDeck.drawCard().getInfo().clone();
 			user.drawCard(cardInfo[0], cardInfo[1]); //second card to user
 		
 			System.out.println("[System] Starting Game");
@@ -97,7 +97,7 @@ public class javaProject_ProjectTwo {
 					conTinue = false;
 					}
 				else if (userHit.equals("hit")) {
-					cardInfo = cardDeck.drawCard().getInfo();
+					cardInfo = cardDeck.drawCard().getInfo().clone();
 					user.drawCard(cardInfo[0], cardInfo[1]);
 				
 					System.out.println("[System] You have drawn the " + user.getCard(user.getHandSize() - 1));
@@ -130,7 +130,7 @@ public class javaProject_ProjectTwo {
 			System.out.println("The dealer's cards are the " + dealer.getCard(0) + " and the " + dealer.getCard(1));
 		
 			while (dealer.hitOrStay() == true) {
-				cardInfo = cardDeck.drawCard().getInfo();
+				cardInfo = cardDeck.drawCard().getInfo().clone();
 				dealer.drawCard(cardInfo[0], cardInfo[1]);
 			
 				System.out.println("The dealer chose to hit.");
