@@ -21,7 +21,7 @@ public class Dealer {
 		}
 	
 	public String getCard(int whatCard) {
-		return this.dealHand[whatCard - 1].getCardString();
+		return this.dealHand[whatCard].getCardString();
 		} //returns the string value of a card in the hand
 	
 	public int getHandSize() {
