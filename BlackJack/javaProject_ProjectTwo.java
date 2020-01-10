@@ -39,9 +39,11 @@ public class javaProject_ProjectTwo {
 			String userResponse = inPut.nextLine();
 			if (userResponse.equals("yes")) {
 				cpuResponse = "Great! Let's get started.";
+				j = -2;
 				}
 			else if (userResponse.equals("no")) {
 				cpuResponse = "Well, we're going to play anyway. Let's get started.";
+				j = -2;
 				}
 			else {
 				System.out.println(userResponse + " is an incorrect input. Please enter \"yes\" or \"no\" in lowercase letters to continue.");
@@ -89,7 +91,7 @@ public class javaProject_ProjectTwo {
 			/* USER'S TURN */
 			System.out.println(userName + ", it is your turn.");
 			
-			while (user.getHandValue() <= winNum && conTinue.equals("true")) {
+			while (user.getHandValue() <= winNum && conTinue == true) {
 				System.out.println("Hit or Stay?");
 				Scanner iNput = new Scanner(System.in);
 				userHit = iNput.nextLine();
