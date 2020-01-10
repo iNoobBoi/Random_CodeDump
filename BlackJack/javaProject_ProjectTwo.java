@@ -87,16 +87,18 @@ public class javaProject_ProjectTwo {
 			System.out.println("You have the " + user.getCard(0) + " and the " + user.getCard(1) + ". Your hand value is " + user.getHandValue());
 		
 			/* USER'S TURN */
-			while (user.getHandValue() <= winNum && conTinue == true) {
+			System.out.println(userName + ", it is your turn.");
+			
+			while (user.getHandValue() <= winNum && conTinue.equals("true")) {
 				System.out.println("Hit or Stay?");
 				Scanner iNput = new Scanner(System.in);
 				userHit = iNput.nextLine();
 				conTinue = true;
 			
-				if (userHit == "stay") {
+				if (userHit.equals("stay")) {
 					conTinue = false;
 					}
-				else if (userHit == "hit") {
+				else if (userHit.equals("hit")) {
 					cardInfo = cardDeck.drawCard().getInfo().clone();
 					user.drawCard(cardInfo[0], cardInfo[1]);
 				
@@ -122,14 +124,18 @@ public class javaProject_ProjectTwo {
 			else if (user.getHandValue() > winNum) {
 				System.out.println("You have BUSTED. Unless the dealer busts even more than you, you have lost.");
 				}
+			
+			System.out.println(userName + ", your turn has ended.");
 		
 			/* DEALER'S TURN */
+			System.out.println("It is the dealer's turn.");
 			System.out.println("The dealer's cards are the " + dealer.getCard(0) + " and the " + dealer.getCard(1));
 		
 			while (dealer.hitOrStay() == true) {
 				cardInfo = cardDeck.drawCard().getInfo().clone();
 				dealer.drawCard(cardInfo[0], cardInfo[1]);
 			
+				System.out.println("The dealer chose to hit.");
 				System.out.println("[System] The dealer has drawn the " + dealer.getCard(dealer.getHandSize() - 1));
 			
 				System.out.println("[System] The dealer's hand value is now " + dealer.getHandValue());
@@ -199,7 +205,7 @@ public class javaProject_ProjectTwo {
 			Scanner INput = new Scanner(System.in);
 			playAgain = INput.nextLine();
 		
-			if(playAgain == "no") {
+			if(playAgain.equals("no")) {
 				System.out.println("[System] Thank you for playing Java BlackJack.");
 				break;
 				}
