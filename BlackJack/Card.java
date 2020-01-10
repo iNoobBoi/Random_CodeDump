@@ -6,8 +6,8 @@ public class Card {
 	public int suit;
 	
 	//card specifics arrays
-	private static String [] whatRank = {"", "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"}; //rank array
-	private static String [] whatSuit = {"", "Clubs", "Diamonds", "Hearts", "Spades"}; //suit array
+	private static String [] whatRank = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"}; //rank array
+	private static String [] whatSuit = {"Clubs", "Diamonds", "Hearts", "Spades"}; //suit array
 	
 	public Card(int suit, int rank) {
 		this.suit = suit;
@@ -27,13 +27,13 @@ public class Card {
 		} //returns the suit of the card
 	
 	public int getValue() {
-		if (this.rank > 10) {
+		if (this.rank > 9) {
 			this.value = 10;
 			} //sets jack, queen, and king to value 10
-		else if (this.rank == 1) {
+		else if (this.rank == 0) {
 			this.value = 11;
 			} //sets ace to 11 (temporarily)
-		else if (this.rank == 0) {
+		else if (this.rank == 13) {
 			this.value = 1;
 			} //sets small ace to 1
 		else {
@@ -56,8 +56,8 @@ public class Card {
 		}
 	
 	public void aceSmall() {
-		if (this.rank == 11) {
-			this.rank = 1;
+		if (this.rank == 0) {
+			this.rank = 13;
 			}
 		}
 	
