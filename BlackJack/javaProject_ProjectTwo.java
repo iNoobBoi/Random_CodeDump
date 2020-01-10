@@ -4,15 +4,10 @@ import java.util.Scanner;
 public class javaProject_ProjectTwo {
 	public static void main(String []args) {
 		/* VARIABLES */
-		boolean win = false;
-		boolean bust = false;
-		boolean keepGoing = true;
-		
 		int cardInfo[] = new int[2]; //array to store the info of the cards drawn
 		
 		int deckCount = 1; //number of decks the user will be playing with
 		int winNum = 21; //number of achieving blackjack
-		int bustNum = 22; //number or higher which you will achieve bust
 		
 		int dealFinal = 0; //final score of dealer
 		int userFinal = 0; //final score of user
@@ -55,8 +50,9 @@ public class javaProject_ProjectTwo {
 		
 		for (int i = 0; i > -1; i++) {
 			/* SETUP */
-			System.out.println("[System] Shuffling Deck");
-			Deck cardDeck = new Deck(deckCount); //creates the shuffled card deck
+			System.out.println("[System] Preparing Deck");
+			Deck cardDeck = new Deck(deckCount); //creates the card deck
+			cardDeck.shuffleDeck(); //shuffles the card deck
 		
 			System.out.println("[System] Preparing Hands");
 			Hand user = new Hand(winNum); //creates the user hand
@@ -65,16 +61,16 @@ public class javaProject_ProjectTwo {
 			Dealer dealer = new Dealer(winNum); //creates the dealer hand
 	
 			System.out.println("[System] Dealing Cards");
-			cardInfo = cardDeck.drawCard().getInfo().clone();
+			cardInfo = cardDeck.drawCard().getInfo();
 			dealer.drawCard(cardInfo[0], cardInfo[1]); //one card to dealer
 		
-			cardInfo = cardDeck.drawCard().getInfo().clone();
+			cardInfo = cardDeck.drawCard().getInfo();
 			dealer.drawCard(cardInfo[0], cardInfo[1]); //second card to dealer
 		
-			cardInfo = cardDeck.drawCard().getInfo().clone();
+			cardInfo = cardDeck.drawCard().getInfo();
 			user.drawCard(cardInfo[0], cardInfo[1]); //one card to user
 		
-			cardInfo = cardDeck.drawCard().getInfo().clone();
+			cardInfo = cardDeck.drawCard().getInfo();
 			user.drawCard(cardInfo[0], cardInfo[1]); //second card to user
 		
 			System.out.println("[System] Starting Game");
@@ -101,7 +97,7 @@ public class javaProject_ProjectTwo {
 					conTinue = false;
 					}
 				else if (userHit.equals("hit")) {
-					cardInfo = cardDeck.drawCard().getInfo().clone();
+					cardInfo = cardDeck.drawCard().getInfo();
 					user.drawCard(cardInfo[0], cardInfo[1]);
 				
 					System.out.println("[System] You have drawn the " + user.getCard(user.getHandSize() - 1));
@@ -134,7 +130,7 @@ public class javaProject_ProjectTwo {
 			System.out.println("The dealer's cards are the " + dealer.getCard(0) + " and the " + dealer.getCard(1));
 		
 			while (dealer.hitOrStay() == true) {
-				cardInfo = cardDeck.drawCard().getInfo().clone();
+				cardInfo = cardDeck.drawCard().getInfo();
 				dealer.drawCard(cardInfo[0], cardInfo[1]);
 			
 				System.out.println("The dealer chose to hit.");
