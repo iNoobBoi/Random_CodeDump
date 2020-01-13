@@ -12,10 +12,14 @@ public class Hand {
 		}
 	
 	public int getHandValue() {
+		int tempValue = 0;
+		
 		for (int i = 0; i < this.counter; i++) {
-			this.handValue += this.userHand[i].getValue();
+			tempValue += this.userHand[i].getValue();
 			} //repeats a loop to add together all of the card values in the hand
-		return handValue;
+		
+		this.handValue = tempValue;
+		return this.handValue;
 		}
 	
 	public String getCard(int whatCard) {
@@ -27,7 +31,7 @@ public class Hand {
 		} //returns size of user's hand
 	
 	public void drawCard(int suit, int rank) {
-		this.userHand[this.counter].setCard(suit, rank);
+		this.userHand[this.counter] = new Card(suit, rank);
 		
 		if (this.userHand[this.counter].getValue() == 11) {
 			if (this.handValue + 11 > this.winNum) {
