@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class javaProject_ProjectTwo {
 	public static void main(String []args) {
 		/* VARIABLES */
-		int cardInfo[] = new int[2]; //array to store the info of the cards drawn
+		int cardInfo[] = {0, 0}; //array to store the info of the cards drawn
 		
 		int deckCount = 1; //number of decks the user will be playing with
 		int winNum = 21; //number of achieving blackjack
@@ -23,11 +23,11 @@ public class javaProject_ProjectTwo {
 		boolean conTinue = true; //whether or not the loop keeps going
 		
 		/* INTRODUCTION */
-		System.out.print("Hello! What is your name? ");
+		System.out.println("Hello! What is your name? ");
 		Scanner input = new Scanner(System.in);
 		String userName = input.nextLine();
 	
-		System.out.print("Hello " + userName + "!\nFor the duration of this program, I would request you to only enter lowercase characters.\nWould you like to play some BlackJack? ");
+		System.out.println("Hello " + userName + "!\nFor the duration of this program, I would request you to only enter lowercase characters.\nWould you like to play some BlackJack? ");
 		
 		for (int j = 0; j > -1; j++) {
 			Scanner inPut = new Scanner(System.in);
@@ -46,6 +46,12 @@ public class javaProject_ProjectTwo {
 		} //infinite loop until correct input
 	
 		System.out.println(cpuResponse);
+		
+		System.out.println("[System] Starting Game");
+		System.out.println("Welcome to BlackJack. The goal is for your hand value to reach " + winNum + ". Getting over " + winNum + ", however, makes you lose. You will play against the dealer, an automatic CPU.");
+		System.out.println("Reaching exactly " + winNum + " is essentially an instant win. When scoring, the person with the hand value closest to " + winNum + " wins.");
+		System.out.println("Aces can either count as 1 or 11. The program will automatically calculate the recommended ace value for you.");
+		
 		System.out.println("[System] Beginning Game");
 		
 		for (int i = 0; i > -1; i++) {
@@ -61,24 +67,18 @@ public class javaProject_ProjectTwo {
 			Dealer dealer = new Dealer(winNum); //creates the dealer hand
 	
 			System.out.println("[System] Dealing Cards");
-			cardInfo = cardDeck.drawCard().getInfo().clone();
-			dealer.drawCard(cardInfo[0], cardInfo[1]); //one card to dealer
+			cardInfo = cardDeck.drawCard().getInfo().clone(); //draws a card from the deck, gets the info from the card in an array, then clones that info to the cardInfo array
+			dealer.drawCard(cardInfo[0], cardInfo[1]); //gives one card to dealer
 		
 			cardInfo = cardDeck.drawCard().getInfo().clone();
-			dealer.drawCard(cardInfo[0], cardInfo[1]); //second card to dealer
+			dealer.drawCard(cardInfo[0], cardInfo[1]); //gives second card to dealer
 		
 			cardInfo = cardDeck.drawCard().getInfo().clone();
-			user.drawCard(cardInfo[0], cardInfo[1]); //one card to user
+			user.drawCard(cardInfo[0], cardInfo[1]); //gives one card to user
 		
 			cardInfo = cardDeck.drawCard().getInfo().clone();
-			user.drawCard(cardInfo[0], cardInfo[1]); //second card to user
+			user.drawCard(cardInfo[0], cardInfo[1]); //gives second card to user
 		
-			System.out.println("[System] Starting Game");
-			System.out.println("Welcome to BlackJack. The goal is for your hand value to reach " + winNum + ". Getting over " + winNum + ", however, makes you lose. You will play against the dealer, an automatic CPU.");
-			System.out.println("Reaching exactly " + winNum + " is essentially an instant win. When scoring, the person with the hand value closest to " + winNum + " wins.");
-			System.out.println("Aces can either count as 1 or 11. When being added to either yours or the dealer's hand, the program will see if the ace being 11 will cause you to bust. If not, the ace will remain as 11. If so, the ace will be set to 1.");
-		
-			System.out.println("Get ready!");
 			System.out.println("[System] Ready");
 		
 			System.out.println("The dealer's cards are the " + dealer.getCard(0) + " and a private card.");
@@ -86,32 +86,43 @@ public class javaProject_ProjectTwo {
 		
 			/* USER'S TURN */
 			System.out.println(userName + ", it is your turn.");
+			conTinue = true;
 			
-			while (user.getHandValue() <= winNum && conTinue == true) {
-				System.out.println("Hit or Stay?");
-				Scanner iNput = new Scanner(System.in);
-				userHit = iNput.nextLine();
-				conTinue = true;
-			
-				if (userHit.equals("stay")) {
+			while (conTinue == true) {
+				if (user.getHandValue() > winNum) {
 					conTinue = false;
-					}
-				else if (userHit.equals("hit")) {
-					cardInfo = cardDeck.drawCard().getInfo().clone();
-					user.drawCard(cardInfo[0], cardInfo[1]);
-				
-					System.out.println("[System] You have drawn the " + user.getCard(user.getHandSize() - 1));
-				
-					System.out.println("[System] Your hand value is now " + user.getHandValue());
+					System.out.println("[System] You cannot hit anymore.");
+					System.out.println("Press \"Enter\" to continue.");
+					Scanner inpUT = new Scanner(System.in);
+					
+					String userSays = inpUT.nextLine();
 					}
 				else {
-					System.out.println("[System] Invalid input.");
+					System.out.println("Hit or Stay?");
+					Scanner iNput = new Scanner(System.in);
+					userHit = iNput.nextLine();
+					conTinue = true;
+			
+					if (userHit.equals("stay")) {
+						conTinue = false;
+						}
+					else if (userHit.equals("hit")) {
+						cardInfo = cardDeck.drawCard().getInfo().clone();
+						user.drawCard(cardInfo[0], cardInfo[1]);
+				
+						System.out.println("[System] You have drawn the " + user.getCard(user.getHandSize() - 1));
+				
+						System.out.println("[System] Your hand value is now " + user.getHandValue());
+						}
+					else {
+						System.out.println("[System] Invalid input.");
+						}
 					}
 				} //loops until you get a blackjack, you bust, or you stay
 		
-			System.out.println("[System] Your cards: ");
+			System.out.println("\n[System] Your cards: ");
 			for (int k = 0; k < user.getHandSize(); k++) {
-				System.out.println(user.getCard(k) + "\n");
+				System.out.println(user.getCard(k));
 				} //prints out all of the user's cards
 		
 			System.out.println("[System] Your hand value is " + user.getHandValue());
@@ -139,9 +150,10 @@ public class javaProject_ProjectTwo {
 				System.out.println("[System] The dealer's hand value is now " + dealer.getHandValue());
 				} //draws cards until dealer's hand is over the max hand value
 		
-			System.out.println("[System] The dealer's cards: ");
+			System.out.println("[System] The dealer cannot hit anymore.");
+			System.out.println("\n[System] The dealer's cards: ");
 			for (int l = 0; l < dealer.getHandSize(); l++) {
-				System.out.println(dealer.getCard(l) + "\n");
+				System.out.println(dealer.getCard(l));
 				} //prints out all of the dealer's cards
 		
 			System.out.println("[System] The dealer's hand value is " + dealer.getHandValue());
@@ -167,6 +179,7 @@ public class javaProject_ProjectTwo {
 				} //if the dealer blackjacked and you have not
 			else if (dealFinal == userFinal) {
 				System.out.println("You have TIED with the dealer. You both had a score of " + user.getHandValue());
+				tieCount++;
 				} //if your score was identical to the dealer's
 			else if (userFinal < 0 && dealFinal < 0 && userFinal > dealFinal) {
 				System.out.println("You have WON! Your score of " + user.getHandValue() + " was closer to " + winNum + " than the dealer's score of " + dealer.getHandValue());
@@ -197,18 +210,22 @@ public class javaProject_ProjectTwo {
 				tieCount++;
 				}
 		
-			System.out.println("[System] You have " + userWins + ". The dealer has " + dealWins + ". You have tied with the dealer " + tieCount + " times.");
+			System.out.println("[System] You have " + userWins + " wins. The dealer has " + dealWins + " wins. You have tied with the dealer " + tieCount + " times.");
 			System.out.println("[System] Do you want to play again?");
 		
 			Scanner INput = new Scanner(System.in);
 			playAgain = INput.nextLine();
 		
-			if(playAgain.equals("no")) {
-				System.out.println("[System] Thank you for playing Java BlackJack.");
+			if (playAgain.equals("no")) {
+				System.out.println("[System] Thank you for playing Java BlackJack as made by Justin.");
 				break;
 				}
+			else if (playAgain.equals("yes")) {
+				System.out.println("[System] Let's play again!\n\n\n\n\n");
+				}
 			else {
-				System.out.println("[System] Let's play again!");
+				System.out.println("[System] " + playAgain + " Is An Invalid Input: Ending Game");
+				break;
 				}
 			}
 		}
