@@ -3,20 +3,24 @@ import java.util.Scanner;
 
 public class Dealer {
 	public Card dealHand[] = new Card[8]; //creates a hand of 8 cards, the largest hand possible that is allowed for a max value of 17 + 1 (2 + 2 + 2 + 2 + 3 + 3 + 3 = 17) excluding aces
-	private final int maxValue = 17; //maximum value of hand in which the dealer can draw - default = 17
+	private int maxValue = 17; //maximum value of hand in which the dealer can draw: default = 17
 	private int handValue; //value of dealer's hand
 	private int counter = 0; //counts the cards in hand
 	private int aceNum = 0; //counts the aces in hand
 	private int winNum = 21; //win number required
 	
 	public Dealer(int winNum) {
+		this.maxValue = winNum - 4;
 		this.winNum = winNum;
 		}
 	
 	public int getHandValue() {
+		int tempValue = 0;
 		for (int i = 0; i < this.counter; i++) {
-			this.handValue += this.dealHand[i].getValue();
+			tempValue += this.dealHand[i].getValue();
 			} //repeats a loop to add together all of the card values in the hand
+		
+		this.handValue = tempValue;
 		return this.handValue;
 		}
 	
@@ -28,8 +32,14 @@ public class Dealer {
 		return this.counter;
 		} //returns size of dealer's hand
 	
-	public boolean hitOrStay() {
-		if (this.handValue >= this.maxValue) {
+	public boolean hitOrStay() {int tempValue = 0;
+		int temp = 0;
+		
+		for (int i = 0; i < this.counter; i++) {
+			temp += this.dealHand[i].getValue();
+			} //repeats a loop to add together all of the card values in the hand
+			
+		if (temp >= this.maxValue) {
 			return false;
 			}
 		else {
@@ -38,7 +48,7 @@ public class Dealer {
 		} //decides whether or not the dealer can keep drawing cards
 	
 	public void drawCard(int suit, int rank) {
-		this.dealHand[this.counter].setCard(suit, rank);
+		this.dealHand[this.counter] = new Card(suit, rank);
 		
 		if (this.dealHand[this.counter].getValue() == 11) {
 			if (this.handValue + 11 > this.winNum) {
