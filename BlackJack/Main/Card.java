@@ -27,7 +27,7 @@ public class Card {
 		} //returns the suit of the card
 	
 	public int getValue() {
-		if (this.rank > 9) {
+		if (this.rank > 9 && this.rank < 13) {
 			this.value = 10;
 			} //sets jack, queen, and king to value 10
 		else if (this.rank == 0) {
@@ -37,7 +37,7 @@ public class Card {
 			this.value = 1;
 			} //sets small ace to 1
 		else {
-			this.value = rank;
+			this.value = this.rank + 1;
 			} //sets other value to themselves
 		
 		return this.value;
