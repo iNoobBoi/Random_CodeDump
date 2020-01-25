@@ -1,4 +1,4 @@
-# Debug File
+# Debug
 
 WARNING! FILES ARE UNSTABLE
 
