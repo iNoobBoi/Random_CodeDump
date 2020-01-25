@@ -1,5 +1,5 @@
-# ChristnaMoose
+# ChristinaMoose
 
-All files owned by ChristinaMoose.
+All files owned by ChristinaMoose
 
-Enter ChristinaMoose/ in front of a file name to put it into this folder.
+Enter "iNoob/" in front of a document name to put it into this folder.
