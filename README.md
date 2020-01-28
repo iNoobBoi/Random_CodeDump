@@ -1,3 +1,3 @@
 # Random Code Dump
 A collection of random code!
-Please make sure not to edit other people's code!
+All folders owned by the corresponding person, please do not edit if you are not them.
