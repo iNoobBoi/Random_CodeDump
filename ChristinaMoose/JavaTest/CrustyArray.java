@@ -3,12 +3,16 @@ public class CrustyArray {
     int [] intArray = {4, 3, 2, 1, 0};
     int intArrayThing [] = new int[3];
     
-    System.out.println("\nBefore Change");
-    System.out.println(intArray[0]);
-    System.out.println(intArray[1]);
-    System.out.println(intArray[2]);
-    System.out.println(intArray[3]);
-    System.out.println(intArray[4]);
+    //System.out.println("\nBefore Change");
+    //System.out.println(intArray[0]);
+    //System.out.println(intArray[1]);
+    //System.out.println(intArray[2]);
+    //System.out.println(intArray[3]);
+    //System.out.println(intArray[4]);
+  
+    for (int i = 0; i < intArray.length; i++) {
+     System.out.println(intArray[i]);
+     }
     
     intArray[0] = 0;
     intArray[1] = 1;
