@@ -2,6 +2,6 @@
 
 All files owned by iNoob
 
-Among Us is an amazing SW Commander and a Bloons TD Battler.
+Rip Star Wars Commander... :C
 
 xD
